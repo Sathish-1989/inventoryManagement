@@ -1,0 +1,20 @@
+/* You can add global styles to this file, and also import other style files */
+/* You can add global styles to this file, and also import other style files */
+/* Creating class for error */
+.error{
+    color: rgb(203, 38, 38);
+    padding: 5px 10px;
+    }
+    
+    .requiredfield{
+        color: rgb(203, 38, 38);
+    }
+
+/* #exampleModal{
+        display: block;
+        width: 45%;
+        max-height: 75%;
+        position: absolute;
+        left: 50%;
+        transform: (-50%, -50%);
+    } */
