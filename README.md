@@ -27,7 +27,7 @@ Prerequisites
 Clone the project
 
 ```bash
-  git clone [https://link-to-project](https://github.com/Sathish-1989/inventoryManagement.git)
+  git clone [https://github.com/Sathish-1989/inventoryManagement.git]
 ```
 
 Go to the project directory for frontend
