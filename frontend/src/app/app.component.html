@@ -1,0 +1,55 @@
+<!-- <div class="container-scroller">
+    <div *ngIf="successUser != undefined || successUser != null">
+          <app-navbar></app-navbar>
+       </div>
+    <div class="container-fluid page-body-wrapper">
+       <div *ngIf="successUser != undefined || successUser != null">
+          <app-sidebar></app-sidebar>
+       </div>
+      
+       <div class="main-panel">
+          <div class="content-wrapper">
+            
+             <router-outlet (activate)="changeofRoutes()"></router-outlet>
+
+ 
+                </div>
+        
+                <app-footer></app-footer>
+                </div>
+                
+    </div>
+ </div>
+  -->
+  <div *ngIf="successUser">
+  <div class="container-scroller">
+   <div *ngIf="successUser">
+     <app-navbar></app-navbar>
+   </div>
+   <div class="container-fluid page-body-wrapper">
+     <div *ngIf="successUser">
+       <app-sidebar></app-sidebar>
+     </div>
+ 
+     <div class="main-panel">
+       <div class="content-wrapper">
+         <router-outlet (activate)="changeofRoutes()"></router-outlet>
+       </div>
+       <app-footer></app-footer>
+     </div>
+   </div>
+ </div>
+</div>
+ <div *ngIf="!successUser">
+   <div class="container-scroller">
+      <div class="container-fluid page-body-wrapper">
+         <div class="side-panel">
+   <div class="content-wrapper">
+      <router-outlet (activate)="changeofRoutes()"></router-outlet>
+    </div>
+    <app-footer></app-footer>
+    </div>
+    
+    </div>
+    </div>
+ </div>

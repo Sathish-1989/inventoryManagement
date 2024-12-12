@@ -1,0 +1,216 @@
+<div class="content-wrapper">
+    <div class="page-header">
+      <h3 class="page-title"> Add Users </h3>
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="#">Users</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Add Users</li>
+        </ol>
+      </nav>
+    </div>
+    <div class="row">
+      <div class="col-12 grid-margin stretch-card">
+        <div class="card">
+          <div class="card-header">
+            <h4 class="card-title" style="padding-top: 10px;">Create New user</h4>
+          </div>
+          <div class="card-body">
+            <form class="forms-sample" #adduser="ngForm" (ngSubmit)="createUser()">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">First Name<span class="requiredfield"> * </span></label>
+                    <div class="col-sm-9">
+                      <input
+                        type="text"
+                        class="form-control"
+                        name="firstname"
+                        [(ngModel)]="model.firstname"
+                        #firstname="ngModel"
+                        placeholder="Enter Firstname"
+                        (ngModelChange)="validateFirstName()"
+                        autocomplete="off"
+                        required
+                      />
+                      <div *ngIf="firstNameError" class="error">
+                        {{ firstNameError }}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Last Name <span class="requiredfield"> * </span></label>
+                    <div class="col-sm-9">
+                      <input
+                        type="text"
+                        class="form-control"
+                        name="lastname"
+                        [(ngModel)]="model.lastname"
+                        #lastname="ngModel"
+                        placeholder="Enter Lastname"
+                        (ngModelChange)="validateLastName()"
+                        autocomplete="off"
+                        required
+                      />
+                      <div *ngIf="lastNameError" class="error">
+                        {{ lastNameError }}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Password <span class="requiredfield"> * </span></label>
+                    <div class="col-sm-9">
+                      <input
+                        type="password"
+                        class="form-control"
+                        name="password"
+                        [(ngModel)]="model.password"
+                        #password="ngModel"
+                        placeholder="Enter Password"
+                        minlength="6"
+                        (ngModelChange)="validatePassword()"
+                        required
+                      />
+                      <div *ngIf="passwordError" class="error">
+                        {{ passwordError }}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Email ID <span class="requiredfield"> * </span></label>
+                    <div class="col-sm-9">
+                      <input
+                        type="email"
+                        class="form-control"
+                        name="mailid"
+                        [(ngModel)]="model.email"
+                        #password="ngModel"
+                        placeholder="Enter Email ID"
+                        (ngModelChange)="validateEmail()"
+                        autocomplete="off"
+                        required
+                      />
+                      <div *ngIf="emailError" class="error">
+                        {{ emailError }}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group row">
+                    <label class="col-sm-3 col-form-label" for="exampleFormControlSelect2">Select Role<span class="requiredfield"> * </span></label>
+                    <div class="col-sm-9">
+                      <select
+                        class="form-select"
+                        id="exampleFormControlSelect2"
+                        name="selectedrole"
+                        [(ngModel)]="model.selectedRole"
+                        #selectedRole="ngModel"
+                        (ngModelChange)="validateRole()"
+                        required
+                      >
+                        <option value="undefined">Choose the role</option>
+                        <option *ngFor="let role of rolesData" [value]="role.role_id_pk">
+                          {{ role.role_name }}
+                        </option>
+                      </select>
+                      <div *ngIf="roleError" class="error">
+                        {{ roleError }}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group row">
+                    <label class="col-sm-3 col-form-label" for="exampleFormControlSelect3">Select Designation<span class="requiredfield"> * </span></label>
+                    <div class="col-sm-9">
+                      <select
+                        class="form-select"
+                        id="exampleFormControlSelect3"
+                        name="selectedDes"
+                        [(ngModel)]="model.selectedDes"
+                        #selectedRole="ngModel"
+                        (ngModelChange)="validateRole()"
+                        required
+                      >
+                        <option value="undefined">Choose the Designation</option>
+                        <option *ngFor="let role of desData" [value]="role.des_id_pk">
+                          {{ role.des_name }}
+                        </option>
+                      </select>
+                      <div *ngIf="desError" class="error">
+                        {{ desError }}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group row">
+                  <label class="col-sm-3 col-form-label">User Status</label>
+                  <div class="col-sm-4">
+                    <div>
+                      <label class="formradiolabel">
+                        <input
+                          type="radio"
+                          class="forminputdesgin"
+                          name="membershipRadios"
+                          id="membershipRadios1"
+                          [(ngModel)]="model.userstatus"
+                          #userstatus="ngModel"
+                          value="active"
+                          checked
+                        />
+                        Active
+                      </label>
+                    </div>
+                  </div>
+                  <div class="col-sm-4">
+                    <div>
+                      <label class="formradiolabel">
+                        <input
+                          type="radio"
+                          class="forminputdesgin"
+                          name="membershipRadios"
+                          id="membershipRadios2"
+                          [(ngModel)]="model.userstatus"
+                          #userstatus="ngModel"
+                          value="inactive"
+                        />
+                        Inactive
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            
+              <div class="col-md-6" style="text-align: center;">
+                <button type="submit" class="btn btn-gradient-primary" style="margin-bottom: 10px;margin-right: 10px;">
+                  Submit
+                </button>
+                <button class="btn btn-gradient-danger" style="margin-bottom: 10px;margin-right: 10px;">
+                  Cancel
+                </button>
+              </div>
+            </form>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,134 @@
+
+<div class="content-wrapper">
+    <div class="page-header">
+        <h3 class="page-title"> Products Sales </h3>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">Sales</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Products Sales</li>
+            </ol>
+        </nav>
+    </div>
+    <div class="row">
+        <div class="col-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title" style="padding-top: 10px;">Selling a Product</h4>
+                </div>
+                <div class="card-body">
+                    <form class="forms-sample" (ngSubmit)="Saleproducts()" >
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="col-sm-4 col-form-label">Customer Name<span class="requiredfield"> *
+                                        </span></label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" name="customername"
+                                            [(ngModel)]="model.customername" #customername="ngModel"
+                                            placeholder="Enter Customer Name" autocomplete="off" (ngModelChange)="validateCustomerName()" required />
+                                            <div *ngIf="customerNameError" class="error">
+                                                {{ customerNameError }}
+                                              </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="col-sm-4 col-form-label">Customer Phone<span class="requiredfield"> *
+                                        </span></label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" name="customerphone"
+                                            [(ngModel)]="model.customerphone" #customerphone="ngModel"
+                                            placeholder="Enter Customer Mobile Number" autocomplete="off" (ngModelChange)="validateMobileNumber()" required />
+                                            <div *ngIf="customerPhoneError" class="error">
+                                                {{ customerPhoneError }}
+                                              </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="col-sm-4 col-form-label">Customer Mail ID<span class="requiredfield"> *
+                                        </span></label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" name="customermailid"
+                                            [(ngModel)]="model.customermailid" #customermailid="ngModel"
+                                            placeholder="Enter Customer Email" autocomplete="off" (ngModelChange)="validateCustomerMail()" required />
+                                            <div *ngIf="customerMailError" class="error">
+                                                {{ customerMailError }}
+                                              </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="col-sm-4 col-form-label" for="productSelector">Select
+                                        Product<span class="requiredfield"> * </span></label>
+                                    <div class="col-sm-8">
+                                        <select class="form-select" id="productSelector" name="qtycount"
+                                            [(ngModel)]="model.qtycount" #qtycount="ngModel" (change)="getqtyCount()" (ngModelChange)="validateProduct()"required>
+                                            <option value="undefined"> Choose the Product</option>
+                                            <option *ngFor="let list of productList" [ngValue]="list">
+                                                {{list.brand_name}} - {{list.product_name}}
+                                            </option>
+                                        </select>
+                                        <div *ngIf="productError" class="error">
+                                            {{ productError }}
+                                          </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="col-sm-4 col-form-label">Quantity <span class="requiredfield"> *
+                                        </span></label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" name="qtylimit" [(ngModel)]="model.qtylimit"
+                                            #qtylimit="ngModel" placeholder="Enter Quantity" autocomplete="off"(ngModelChange)="validateQuantity()" required />
+                                            <div *ngIf="quantityError" class="error">
+                                                {{ quantityError }}
+                                              </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="col-sm-4 col-form-label">Total Price <span class="requiredfield"> *
+                                        </span></label>
+                                    <div class="col-sm-8">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text text-black"> €</span>
+                                            </div>
+                                            <input type="text" class="form-control" name="pricevalue"
+                                                [(ngModel)]="model.pricevalue" #pricevalue="ngModel"
+                                                placeholder="Enter Price" autocomplete="off" disabled="true" required />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6" style="text-align: center;">
+                            <button type="submit" class="btn btn-gradient-primary"
+                                style="margin-bottom: 10px;margin-right: 10px;">Submit</button>
+                            <button class="btn btn-gradient-danger"
+                                style="margin-bottom: 10px;margin-right: 10px;">Cancel</button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

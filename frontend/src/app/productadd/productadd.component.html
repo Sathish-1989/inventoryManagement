@@ -1,0 +1,149 @@
+<div class="content-wrapper">
+    <div class="page-header">
+        <h3 class="page-title"> Add Products </h3>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">Products</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Add products</li>
+            </ol>
+        </nav>
+    </div>
+    <div class="row">
+        <div class="col-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title" style="padding-top: 10px;">Create New Product</h4>
+                </div>
+                <div class="card-body">
+                    <form class="forms-sample" (ngSubmit)="createproduct()" >
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="col-sm-4 col-form-label">Product Name<span class="requiredfield"> *
+                                        </span></label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" name="productname"
+                                            [(ngModel)]="model.productname" #productname="ngModel"
+                                            placeholder="Enter Product Name" autocomplete="off" required />
+                                            <div *ngIf="productNameError" class="error">
+                                                {{ productNameError }}
+                                              </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="col-sm-4 col-form-label" for="exampleFormControlSelect2">Select
+                                        Category<span class="requiredfield"> * </span></label>
+                                    <div class="col-sm-8">
+                                        <select class="form-select" id="exampleFormControlSelect2" name="category"
+                                            [(ngModel)]="model.category" #category="ngModel" required>
+                                            <option value="undefined"> Choose the Category </option>
+
+                                            <option *ngFor="let catDet of categoryDetails" [value]="catDet.category_id">
+                                                {{ catDet.category_name }}
+                                            </option>
+                                        </select>
+                                        <div *ngIf="categoryError" class="error">
+                                            {{ categoryError }}
+                                          </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="col-sm-4 col-form-label" for="exampleFormControlSelect2">Select
+                                        Brand<span class="requiredfield"> * </span></label>
+                                    <div class="col-sm-8">
+                                        <select class="form-select" id="exampleFormControlSelect2" name="branddetails"
+                                            [(ngModel)]="model.branddetails" #branddetails="ngModel" required>
+                                            <option value="undefined"> Choose the Brand</option>
+                                            <option *ngFor="let brand of brandDetails" [value]="brand.brand_id">
+                                                {{ brand.brand_name }}
+                                            </option>
+                                        </select>
+                                        <div *ngIf="brandError" class="error">
+                                            {{ brandError }}
+                                          </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="col-sm-4 col-form-label">Quantity <span class="requiredfield"> *
+                                        </span></label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" name="qty" [(ngModel)]="model.qty"
+                                            #qty="ngModel" placeholder="Enter Quantity" autocomplete="off" required />
+                                            <div *ngIf="quantityError" class="error">
+                                                {{ quantityError }}
+                                              </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group row">
+                                    <label class="col-sm-4 col-form-label">Total Price <span class="requiredfield"> *
+                                        </span></label>
+                                    <div class="col-sm-8">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text text-black"> €</span>
+                                            </div>
+                                            <input type="text" class="form-control" name="pricevalue"
+                                                [(ngModel)]="model.pricevalue" #pricevalue="ngModel"
+                                                placeholder="Enter Price" autocomplete="off" required />
+                                        </div>
+                                        <div *ngIf="priceError" class="error">
+                                            {{ priceError }}
+                                          </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                                <label class="col-sm-4 col-form-label" style="width: 30.333% !important;">Status</label>
+                                <div class="col-sm-4" style="width: 31.333% !important;">
+                                    <div>
+                                        <label class="formradiolabel">
+                                            <input type="radio" class="forminputdesgin" name="membershipRadios"
+                                                id="membershipRadios1" [(ngModel)]="model.pdtstatus"
+                                                #pdtstatus="ngModel" value="available" checked> Avaialable </label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4" style="width: 36.33% !important;">
+                                    <div>
+                                        <label class="formradiolabel">
+                                            <input type="radio" class="forminputdesgin" name="membershipRadios"
+                                                id="membershipRadios2" [(ngModel)]="model.pdtstatus"
+                                                #pdtstatus="ngModel" value="unavailable"> Not Avaialable </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-6" style="text-align: center;">
+                            <button type="submit" class="btn btn-gradient-primary"
+                                style="margin-bottom: 10px;margin-right: 10px;">Submit</button>
+                            <button class="btn btn-gradient-danger"
+                                style="margin-bottom: 10px;margin-right: 10px;">Cancel</button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

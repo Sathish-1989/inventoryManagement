@@ -1,0 +1,70 @@
+<div class="content-wrapper">
+    <div class="page-header">
+      <h3 class="page-title"> List Users </h3>
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="#">Users</a></li>
+          <li class="breadcrumb-item active" aria-current="page">List Users</li>
+        </ol>
+      </nav>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title" style="padding-top: 10px;">List of Users</h3> <span style="float: right;font-weight:bolder"> Total Records: {{count}}</span> 
+                </div>
+              <div class="card-body">
+                <div class="table-responsive">
+                  <table class="table table-striped">
+                    <thead>
+                      <tr>
+                        <th> Username </th>
+                        <th> First name </th>
+                        <th> Last name </th>
+                        <th> Role </th>
+                        <th> Status</th>
+                        <th> Actions </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let list of userList | paginate: { itemsPerPage: 10, currentPage: p, totalItems: count }">
+                          <td class="py-1">{{list.username}}</td>
+                          <td>{{list.firstname}}</td>
+                          <td>{{list.lastname}}</td>
+                          <td>{{list.rolename}}</td>
+                          <td>{{list.user_status== 0 ? "Inactive" : "Active" }}</td>
+                          <td>&nbsp;&nbsp;
+                              <a data-bs-toggle="tooltip" data-bs-placement="left" title="Modify" (click)="getUserID(list.user_id_pk)" style="cursor: pointer; color: #0d6efd;"><i class="mdi mdi-lead-pencil"></i></a>
+                              <a *ngIf="roleId == 1" (click)="getdeleteId(list.user_id_pk)" style="cursor: pointer;color: red;" data-bs-toggle="modal" data-bs-target="#exampleModal-3"><i class="mdi mdi-delete"></i></a>
+                          </td>
+                          <div class="modal fade" data-backdrop="false" id="exampleModal-3" aria-labelledby="exampleModalLabel-3"  role="dialog" style="background: transparent;">
+                            <div class="modal-dialog modal-sm">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title" id="exampleModalLabel-3">Delete Confrimation</h5>
+                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body"> Are You sure Do you want to Delete? </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-gradient-primary btn-rounded btn-fw" (click)="deleteFn()" data-bs-dismiss="modal">Yes</button>
+                                  <button type="button" class="btn btn-gradient-danger btn-rounded btn-fw" data-bs-dismiss="modal">No</button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </tr>
+                      <tr *ngIf="count== 0"> 
+                        <td  class="py-1" colspan="6" style="text-align: center;font-size: 16px;">No User available</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+               
+                <div style="margin-top: 10px;">
+                  <pagination-controls (pageChange)="pageChangeEvent($event)"></pagination-controls>
+                </div>
+              </div>
+            </div>
+          </div>
+    </div>
+  </div>

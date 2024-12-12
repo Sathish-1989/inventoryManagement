@@ -1,0 +1,21 @@
+/* .side-panel{
+    transition: width 0.25s ease, margin 0.25s ease;
+    width: calc(100% - 0px) !important;
+    min-height: calc(100vh - 0px) !important;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+}
+
+.sidebar-icon-only .side-panel {
+    width: calc(100% - 0px);
+  }
+
+ 
+  @media (max-width: 991px) {
+    .side-panel {
+      margin-left: 0;
+      width: 100%;
+    }
+} */

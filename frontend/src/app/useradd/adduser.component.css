@@ -1,0 +1,11 @@
+.formradiolabel{
+    padding: 1.25em;
+}
+
+.forminputdesgin{
+    margin-left: 10px;
+    background-color: blue;
+    height: 20px;
+    vertical-align: middle;
+    width: 20px;
+}

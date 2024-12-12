@@ -1,0 +1,65 @@
+<div class="content-wrapper">
+    <div class="page-header">
+      <h3 class="page-title"> Sales List </h3>
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="#">Sales</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Sales List</li>
+        </ol>
+      </nav>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title" style="padding-top: 10px;">List of Sales</h3> <span style="float: right;font-weight:bolder"> Total Records: {{count}}</span> 
+                </div>
+              <div class="card-body">
+                <div class="table-responsive">
+                  <table class="table table-striped">
+                    <thead>
+                      <tr style="text-align: center;">
+                        <th> Name </th>
+                        <th> Mobile </th>
+                        <th> Mail id </th>
+                        <th> Brand </th>
+                        <th> Sold</th>
+                        <th> Qty</th>
+                        <th> Cost</th>
+                        <th> Action</th>
+                        <!-- <th *ngIf="roleId !=3 && roleId != 4"> Actions </th> -->
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let list of salesList | paginate: { itemsPerPage: 10, currentPage: p, totalItems: count }" style="text-align: center;">
+                          <td class="py-1">{{list.customer_name}}</td>
+                          <td>+{{list.customer_mobile}}</td>
+                          <td>{{list.customer_mailid}}</td>
+                          <td>{{list.brand_name}}</td>
+                          <td>{{list.product_name}}</td>
+                          <td>{{list.product_sold}} </td>
+                          <td>{{list.product_totprice | number : '1.2-2'}} &nbsp; &#8364;</td>
+                          <td>
+                            <span *ngIf="list.invoice_generated == 0">
+                              <button type="button" class="btn btn-inverse-primary btn-icon"  data-bs-toggle="tooltip" data-bs-placement="left" title="Invoice Generate" (click)="generateInvoice(list)"><i class="mdi mdi-file-document"></i>
+                              </button>
+                            </span>
+                            <span *ngIf="list.invoice_generated == 1">
+                              <button type="button" class="btn btn-inverse-info btn-icon"  data-bs-toggle="tooltip" data-bs-placement="left" title="downloadinvoice" (click)="downloadInvoice(list.generated_invoice_number)"><i class="mdi mdi-download" fa-2x></i>
+                              </button>
+                            </span>
+                          </td>
+                     
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+               
+                <div style="margin-top: 10px;">
+                  <pagination-controls (pageChange)="pageChangeEvent($event)"></pagination-controls>
+                </div>
+              </div>
+            </div>
+          </div>
+    </div>
+  </div>

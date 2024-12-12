@@ -1,0 +1,30 @@
+.formradiolabel{
+    padding: 1.25em;
+}
+
+.forminputdesgin{
+    margin-left: 10px;
+    background-color: blue;
+    height: 20px;
+    vertical-align: middle;
+    width: 20px;
+}
+
+.col-ms-3{
+    flex: 0 0 auto;
+    width: 14.2222%;
+}
+
+.col.-dm-6{
+    width: 70%;
+}
+
+.col-ms-2{
+    flex: auto;
+    width: 15.333%;
+}
+
+.col-ms-4{
+    flex: auto;
+    width:70.333%;
+}

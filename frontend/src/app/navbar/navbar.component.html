@@ -1,0 +1,49 @@
+<nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+  <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-start">
+    <div class="row ">
+      <a class="navbar-brand brand-logo">
+          <i class="fa fa-cubes" aria-hidden="true" style="color: #b66dff;margin-left: 5px;"></i>
+        <span style="font-size:16px;">&nbsp;&nbsp;Inventory Management</span>
+      </a>
+      <a class="navbar-brand brand-logo-mini">
+          <i class="fa fa-cubes" aria-hidden="true" style="color: #b66dff;margin-left: 5px;"></i>    
+      </a>
+  </div>
+  </div>
+  <div class="navbar-menu-wrapper d-flex align-items-stretch">
+    <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-bs-toggle="minimize">
+      <span class="mdi mdi-menu"></span>
+    </button>
+        <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-bs-toggle="offcanvas">
+      <span class="mdi mdi-menu"></span>
+    </button>
+    <!-- <div class="search-field d-none d-md-block">
+      <form class="d-flex align-items-center h-100" action="#">
+        <div class="input-group">
+          <div class="input-group-prepend bg-transparent">
+            <i class="input-group-text border-0 mdi mdi-magnify"></i>
+          </div>
+          <input type="text" class="form-control bg-transparent border-0" placeholder="Search projects">
+        </div>
+      </form>
+    </div> -->
+    <ul class="navbar-nav navbar-nav-right">
+      <li class="nav-item nav-profile dropdown">
+        <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-bs-toggle="dropdown">
+        
+          <div class="nav-profile-img">
+            <img src="../../assets/images/faces-clipart/unisex.png" alt="image">
+            <span class="availability-status online"></span>
+          </div>
+        </a>
+        <div class="dropdown-menu  dropdown-menu-end navbar-dropdown" aria-labelledby="profileDropdown">
+          <a class="dropdown-item" href="#">
+            <i class="mdi mdi-cached me-2 text-success"></i> Activity Log </a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#"  (click)="LogOut()">
+            <i class="mdi mdi-logout me-2 text-primary"></i> Signout </a>
+        </div>
+          </ul>
+
+  </div>
+</nav>
